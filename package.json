@@ -1,0 +1,17 @@
+{
+  "name": "TaskManagerMERN",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/Tane4ka170/TaskManagerMERN.git",
+  "author": "Tane4ka170 <tane4ka170@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "concurrently": "^9.0.1",
+    "nodemon": "^3.1.7"
+  },
+  "scripts": {
+    "client": "yarn --cwd client dev",
+    "server": " nodemon  server/server.js",
+    "dev": "concurrently \"yarn server\" \"yarn client\""
+  }
+}
