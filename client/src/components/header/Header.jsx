@@ -1,3 +1,5 @@
+import "./header.scss";
+
 const Header = () => {
   return (
     <div>
@@ -5,7 +7,10 @@ const Header = () => {
         <div className="header__logo">
           <h3>TaskManager</h3>
         </div>
-        <div className="header__buttons"></div>
+        <div className="header__buttons">
+          <button>Sign in</button>
+          <button>Sign Out</button>
+        </div>
       </nav>
     </div>
   );
