@@ -1,0 +1,14 @@
+@import '../../styles/abstract/mixins';
+
+.signup-form{
+width: 100vw;
+    height: 100vh;
+    @include flex-center(flex, row, center, center);
+
+    &__wrapper{
+        width: 50%;
+        border: 1px solid #3d1be0;
+        height: 400px;
+        @include flex-center(flex, row, center, center);
+    }
+}
