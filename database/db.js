@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-const mongoURI = "mongodb://127.0.0.1:27017/task-manager";
+const { DB_HOST } = process.env;
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
 
 mongoose
-  .connect(mongoURI, options)
+  .connect(DB_HOST, options)
   .then(() => {
     console.log("Connected to MongoDB");
   })
