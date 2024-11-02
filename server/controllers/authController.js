@@ -63,3 +63,5 @@ const register = async (req, res) => {
     return res.statusbar(400).send("An error occurred while creating the user");
   }
 };
+
+module.exports = { signIn, register };
