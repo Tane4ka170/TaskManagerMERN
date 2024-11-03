@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import "./registration.scss";
 import "../../styles/components/_button.scss";
+import { register } from "../../redux/authSlice";
 
 const Signup = () => {
   const [state, setState] = useState({
@@ -8,8 +10,18 @@ const Signup = () => {
     password: "",
     username: "",
   });
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch(
+      register({
+        username: state.username,
+        password: state.password,
+      })
+    );
+  };
   const handleChange = (e) => {
     setState({
       ...state,
