@@ -1,7 +1,10 @@
 const express = require("express");
 const app = express();
-require('../database/db')
+require("../database/db");
+const cors = require("cors");
+const authRouter = require("./routes/auth.routes");
 
+app.use(cors());
 const port = 8235;
 
 app.listen(port, () => {
