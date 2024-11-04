@@ -56,7 +56,7 @@ export const register = (user) => async (dispatch) => {
     };
 
     const response = await axios.post(
-      "http://localhost:8325/auth/register",
+      "http://localhost:8235/auth/signup",
       formData,
       config
     );
@@ -75,7 +75,7 @@ export const register = (user) => async (dispatch) => {
 export const signin = (user) => async (dispatch) => {
   try {
     const response = await axios.post(
-      "http://localhost:8325/auth/signin",
+      "http://localhost:8235/auth/signin",
       user
     );
     if (response) {
