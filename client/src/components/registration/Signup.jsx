@@ -18,6 +18,7 @@ const Signup = () => {
     dispatch(
       register({
         username: state.username,
+        email: state.email,
         password: state.password,
       })
     );
