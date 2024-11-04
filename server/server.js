@@ -2,9 +2,14 @@ const express = require("express");
 const app = express();
 require("../database/db");
 const cors = require("cors");
-const authRouter = require("./routes/auth.routes");
+const morgan = require("morgan");
+const authRoutes = require("./routes/auth.routes");
 
 app.use(cors());
+app.use(morgan("dev"));
+app.use(express.json());
+app.use("/auth", authRoutes);
+
 const port = 8235;
 
 app.listen(port, () => {
