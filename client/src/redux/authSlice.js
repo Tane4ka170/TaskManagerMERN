@@ -2,9 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import history from "../history";
 
+const initalUser = localStorage.getItem("auth")
+  ? JSON.parse(localStorage.getItem("auth"))
+  : null;
+
 const initialState = {
   isLoading: false,
-  currentUser: null,
+  currentUser: initalUser,
   error: null,
 };
 
