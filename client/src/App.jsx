@@ -4,14 +4,17 @@ import Signin from "./components/registration/SignIn";
 import Signup from "./components/registration/SignUp";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+import Home from "./pages/home/Home";
+
 import "./styles/main.scss";
 
 function App() {
   return (
     <div>
-      <Header />
       <Router>
+        <Header />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>
