@@ -10,15 +10,18 @@ export const Dashboard = () => {
           <Sidebar />
         </div>
         <div className="dashboard__right">
-          <div className="taskcount">
-            <div className="todo box">todo</div>
-            <div className="doing box">doing</div>
-            <div className="done box">done</div>
-          </div>
-          <div className="createButton">
-            <Link to="/taskmanager" className="button">
-              Create Task
-            </Link>
+          <div className="dashboard__rightContent">
+            <h2>Task Status Dashboard</h2>
+            <div className="taskcount">
+              <div className="todo box">todo</div>
+              <div className="doing box">doing</div>
+              <div className="done box">done</div>
+            </div>
+            <div className="createButton">
+              <Link to="/taskmanager" className="button">
+                Create Task
+              </Link>
+            </div>
           </div>
         </div>
       </div>
