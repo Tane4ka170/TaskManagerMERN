@@ -16,6 +16,9 @@ const Sidebar = () => {
         <li className="list-item">
           <Link to="/dashboard">Dashboard</Link>
         </li>
+        <li className="list-item">
+          <Link to="/settings">Settings</Link>
+        </li>
       </ul>
     </div>
   );
