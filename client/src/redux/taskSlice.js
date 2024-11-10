@@ -17,6 +17,10 @@ export const taskSlice = createSlice({
   reducers: {
     taskAddedSuccessfully: (state, action) => {
       state.TaskData = action.payload;
+      state.AllTasks = {
+        ...state.AllTasks,
+        [action.payload._id]: action.payload,
+      };
     },
     taskAddFailure: (state) => {
       return state;
@@ -31,7 +35,7 @@ export const taskSlice = createSlice({
       state.TaskData = action.payload;
     },
     deleteSuccess: (state, action) => {
-      state.TaskData = action.payload;
+      delete state.AllTasks[action.payload._id];
     },
     deleteFail: (state) => {
       return state;
@@ -53,16 +57,35 @@ export default taskSlice.reducer;
 
 export const addTask = (task, id) => async (dispatch) => {
   const taskData = { task, id };
-  const response = await axios.post("http://localhost:8235/task/add", taskData);
-
-  if (response) {
-    localStorage.setItem("task", JSON.stringify(response.data));
-
-    dispatch(taskAddedSuccessfully(response.data));
-    window.location.reload();
-  } else {
+  try {
+    const response = await axios.post(
+      "http://localhost:8235/task/add",
+      taskData
+    );
+    if (response) {
+      localStorage.setItem("task", JSON.stringify(response.data));
+      dispatch(taskAddedSuccessfully(response.data));
+    }
+  } catch (error) {
     dispatch(taskAddFailure());
   }
 };
 
-export const getAllTasks = (token) => async(dispatch);
+export const getAllTasks = (token) => async (dispatch) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  try {
+    const response = await axios.get(
+      "http://localhost:8235/task/tasks",
+      config
+    );
+    if (response) {
+      dispatch(getAllTaskSuccess(response.data));
+    }
+  } catch (error) {
+    dispatch(getAllTasksFailure());
+  }
+};
