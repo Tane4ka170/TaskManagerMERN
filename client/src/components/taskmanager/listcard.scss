@@ -1,12 +1,13 @@
 .menu{
-    display: flex;
+display: flex;
     justify-content: space-between;
     align-items: center;
-  margin: 1rem 0;
+margin: 1rem auto;
+    width: 90%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  width: 90%;
     
   li{
-      padding: 1rem;
+    padding: 1rem;
+        flex: 1;
     }
 }
