@@ -1,4 +1,5 @@
 import "./listcard.scss";
+import { BiChevronLeft, BiChevronRight, BiTrash } from "react-icons/bi";
 
 const ListCard = ({ item }) => {
   return (
