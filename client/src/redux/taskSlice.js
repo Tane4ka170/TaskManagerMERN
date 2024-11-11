@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const initialTask = localStorage.getItem("task")
   ? JSON.parse(localStorage.getItem("task"))
@@ -40,7 +41,6 @@ export const taskSlice = createSlice({
     deleteFail: (state) => {
       return state;
     },
-
   },
 });
 
@@ -91,24 +91,35 @@ export const getAllTasks = (token) => async (dispatch) => {
   }
 };
 
-export const arrowClick = (item) =>  {
-  let taskData={
+export const arrowClick = (item, string) => async () => {
+  let taskData = {
     id: item._id,
     status: item.status,
     string,
-  }
-
+  };
   try {
     let response = await axios.put(
-			`http://localhost:8235/task/${taskData.id}`,
-			taskData
-		);
+      `http://localhost:8235/task/${taskData.id}`,
+      taskData
+    );
 
     if (response) {
-      window.location.reload()
+      window.location.reload();
     }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 };
-export const forwardArrowClick = (item) => async(dispatch)={};
+
+export const deleteItem = (id) => async (dispatch) => {
+  let res = await axios.delete(`http://localhost:8235/task/${id}`);
+
+  if (res) {
+    dispatch(deleteSuccess());
+    toast.success("Task deleted successfully");
+
+    window.location.reload();
+  } else {
+    dispatch(deleteFail());
+  }
+};
