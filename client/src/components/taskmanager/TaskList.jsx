@@ -5,17 +5,17 @@ import ListCard from "./ListCard";
 import "./tasklist.scss";
 
 const TaskList = () => {
-  const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const tasks = useSelector((state) => state.task);
+
   const { currentUser } = auth;
-  const AllTasks = tasks?.AllTasks || {};
+  const { AllTasks } = tasks;
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (currentUser?.token) {
-      dispatch(getAllTasks(currentUser.token));
-    }
-  }, [dispatch, currentUser?.token]);
+    dispatch(getAllTasks(currentUser.token, currentUser.id));
+  }, [dispatch, currentUser.token, currentUser.id]);
 
   return (
     <div>
@@ -33,9 +33,9 @@ const TaskList = () => {
           <h5>Action</h5>
         </li>
       </ul>
-      {Object.values(AllTasks).map((item) => (
-        <ListCard key={item._id} item={item} />
-      ))}
+      {Object.values(AllTasks).map((item) => {
+        return <ListCard key={item._id} item={item} />;
+      })}
     </div>
   );
 };
