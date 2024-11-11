@@ -6,8 +6,21 @@ margin: 1rem auto;
     width: 90%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
-  li{
-    padding: 1rem;
+li {
+        padding: 1rem;
         flex: 1;
+
+        button {
+            margin: 5px;
+        }
     }
+
+    p {
+        font-size: 14px;
+    }
+}
+
+.completed {
+    background-color: green;
+    color: white;
 }
