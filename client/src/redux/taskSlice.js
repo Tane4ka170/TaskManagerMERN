@@ -40,6 +40,7 @@ export const taskSlice = createSlice({
     deleteFail: (state) => {
       return state;
     },
+
   },
 });
 
@@ -89,3 +90,25 @@ export const getAllTasks = (token) => async (dispatch) => {
     dispatch(getAllTasksFailure());
   }
 };
+
+export const arrowClick = (item) =>  {
+  let taskData={
+    id: item._id,
+    status: item.status,
+    string,
+  }
+
+  try {
+    let response = await axios.put(
+			`http://localhost:8235/task/${taskData.id}`,
+			taskData
+		);
+
+    if (response) {
+      window.location.reload()
+    }
+  } catch (error) {
+    console.log(error)
+  }
+};
+export const forwardArrowClick = (item) => async(dispatch)={};
